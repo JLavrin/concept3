@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      #BUMP VERSIONS
       - name: Bump version and create tag
         id: version
         run: |
@@ -43,6 +44,8 @@ jobs:
           git tag $NEW_VERSION
           git push origin $NEW_VERSION
           echo "::set-output name=version_tag::$NEW_VERSION"
+
+      # DEPLOY TO HEROKU SERVICES
       - name: Deploy to Heroku
         id: deploy_to_heroku
         uses: akhileshns/heroku-deploy@v3.12.13
