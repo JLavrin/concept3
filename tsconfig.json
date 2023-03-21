@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "allowJs": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -20,6 +20,15 @@
     "types": [
       "node"
     ],
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": ["*"]
+      }
+    ]
   },
   "include": [
     "**/*.ts",

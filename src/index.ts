@@ -2,8 +2,9 @@ import 'tsconfig-paths/register'
 
 import express from 'express'
 import morgan from 'morgan'
-import errorHandler from 'src/handlers/errorHandler'
 import ApiV1 from 'src/modules/ApiV1'
+import errorHandler from 'src/handlers/errorHandler'
+
 
 const PORT = process.env.PORT || 3000
 const HOST = process.env.HOST || 'http://localhost'

@@ -1,12 +1,14 @@
 {
   "scripts": {
     "dev": "nodemon --watch \"src/**\" --ext \"ts\" --exec \"ts-node --project tsconfig.json src/index.ts\"",
-    "build": "tsc",
+    "build": "tsc --module commonjs --project tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@zerollup/ts-transform-paths": "^1.7.18",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "tsc-alias": "^1.8.4",
     "tsconfig-paths": "^4.1.2"
   },
   "devDependencies": {
