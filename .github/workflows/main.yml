@@ -17,6 +17,7 @@ jobs:
         run: |
           # Get the current version from the latest tag
           VERSION=$(git describe --abbrev=0 --tags)
+          echo "Current version is $VERSION"
           
           # Split the version into parts (e.g. "v1.2.3" => "1" "2" "3")
           MAJOR=$(echo $VERSION | cut -d '.' -f 1 | sed 's/v//')
