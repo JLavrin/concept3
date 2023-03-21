@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       #BUMP VERSIONS
+      - uses: fwilhe2/bump-version@main
+        id: bump
+        with:
+          component: patch
+      - run: echo ${{ steps.bump.outputs.newVersion }}
       - name: Bump version and create tag
         id: version
         run: |
