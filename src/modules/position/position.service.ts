@@ -17,4 +17,20 @@ export class PositionService {
       ...response,
     };
   }
+
+  async getPositionsByRouteShortName(
+    routeShortName: string,
+  ): Promise<PositionRequestData & { secondsTillLastUpdate: number }> {
+    const response = await this.getPositions();
+
+    const lastUpdate = dayjs(response.lastUpdate);
+
+    return {
+      ...response,
+      secondsTillLastUpdate: dayjs().diff(lastUpdate, 'seconds'),
+      vehicles: response.vehicles.filter(
+        (vehicle) => vehicle.routeShortName === routeShortName,
+      ),
+    };
+  }
 }

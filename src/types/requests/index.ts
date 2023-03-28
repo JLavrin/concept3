@@ -1,23 +1,14 @@
-type Position = {
-  generated: string;
-  routeShortName: string;
-  tripId: number;
-  headsign: string;
-  vehicleCode: string;
-  vehicleService: string;
-  vehicleId: number;
-  speed: number;
-  direction: number;
-  delay: number;
-  scheduledTripStartTime: string;
-  lat: number;
-  lon: number;
-  gpsQuality: number;
-};
+import { Departure } from 'src/types/Departure';
+import { Position } from 'src/types/Position';
 
 type PositionRequestData = {
   lastUpdate: string;
   vehicles: Position[];
 };
 
-export type { PositionRequestData };
+type DepartureRequestData = {
+  lastUpdate: string;
+  departures: Departure[];
+};
+
+export type { PositionRequestData, DepartureRequestData };
