@@ -16,6 +16,15 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "jsx": "react",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+  },
+  "include": [
+    "src/**/*",
+    "src/client/**/*",
+  ],
 }

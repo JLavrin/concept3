@@ -1,6 +1,6 @@
-import gdanskClient from 'src/providers/clients/gdanskClient';
-import ProviderException from 'src/exceptions/ProviderException';
-import { DepartureRequestData } from 'src/types/requests';
+import gdanskClient from 'src/server/providers/clients/gdanskClient';
+import ProviderException from 'src/server/exceptions/ProviderException';
+import { DepartureRequestData } from 'src/server/types/requests';
 
 const getPositionsQuery = async (
   stopId?: number,

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import getDeparturesQuery from 'src/requests/getDeparturesQuery';
-import { DepartureRequestData } from 'src/types/requests';
+import getDeparturesQuery from 'src/server/requests/getDeparturesQuery';
+import { DepartureRequestData } from 'src/server/types/requests';
 
 @Injectable()
 export class DepartureService {

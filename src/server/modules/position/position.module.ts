@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PositionController } from 'src/modules/position/position.controller';
-import { PositionService } from 'src/modules/position/position.service';
+import { PositionController } from 'src/server/modules/position/position.controller';
+import { PositionService } from 'src/server/modules/position/position.service';
 
 @Module({
   imports: [],

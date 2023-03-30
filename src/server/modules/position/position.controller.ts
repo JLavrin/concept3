@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { PositionService } from 'src/modules/position/position.service';
-import { PositionRequestData } from 'src/types/requests';
+import { PositionService } from 'src/server/modules/position/position.service';
+import { PositionRequestData } from 'src/server/types/requests';
 import { ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('position')

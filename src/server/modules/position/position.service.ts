@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import getPositionsQuery from 'src/requests/getPositionsQuery';
-import { PositionRequestData } from 'src/types/requests';
-import dayjs from 'src/helpers/dayjs';
+import getPositionsQuery from 'src/server/requests/getPositionsQuery';
+import { PositionRequestData } from 'src/server/types/requests';
+import dayjs from 'src/server/helpers/dayjs';
 
 @Injectable()
 export class PositionService {

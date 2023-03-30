@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { DepartureService } from 'src/modules/departure/departure.service';
-import { DepartureRequestData } from 'src/types/requests';
+import { DepartureService } from 'src/server/modules/departure/departure.service';
+import { DepartureRequestData } from 'src/server/types/requests';
 
 @ApiTags('departure')
 @Controller('departure')

@@ -1,8 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-import { AppModule } from './app.module';
+import { AppModule } from 'src/server/modules/app/app.module';
 import * as dotenv from 'dotenv';
+import * as express from 'express';
+import { join } from 'path';
 
 dotenv.config();
 
@@ -17,6 +19,14 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  app.setGlobalPrefix('api');
+
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  app.use(
+    express.static(join(__dirname, '..', isProduction ? 'dist/public' : '')),
+  );
 
   await app.listen(process.env.PORT || process.env.APP_PORT || 3000);
 }

@@ -1,6 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import dayjs from 'src/helpers/dayjs';
+import dayjs from 'src/server/helpers/dayjs';
 
 @Injectable()
 export class TestCron implements OnModuleInit {
