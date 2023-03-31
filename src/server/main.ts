@@ -1,33 +1,37 @@
-import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestFactory } from '@nestjs/core'
+import { SwaggerModule } from '@nestjs/swagger'
 
-import { AppModule } from 'src/server/modules/app/app.module';
-import * as dotenv from 'dotenv';
-import * as express from 'express';
-import { join } from 'path';
+import { AppModule } from 'src/server/modules/app/app.module'
+import * as dotenv from 'dotenv'
+import { join } from 'path'
+import config from 'src/server/config/swagger'
 
-dotenv.config();
+dotenv.config()
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule)
 
-  const config = new DocumentBuilder()
-    .setTitle('Bus api')
-    .setDescription('Api for public transport in Gdańsk city')
-    .setVersion('1.0')
-    .addTag('bus')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  const document = SwaggerModule.createDocument(app, config)
+  SwaggerModule.setup('api', app, document)
+  app.setGlobalPrefix('api')
 
-  app.setGlobalPrefix('api');
+  const indexFilePath =
+    process.env.NODE_ENV === 'production'
+      ? 'dist/public/index.html'
+      : 'index.html'
 
-  const isProduction = process.env.NODE_ENV === 'production';
+  app.use((req, res, next) => {
+    const path = req.path
+    if (path.startsWith('/api/')) {
+      return next()
+    } else {
+      const filePath = join(__dirname, '..', indexFilePath)
 
-  app.use(
-    express.static(join(__dirname, '..', isProduction ? 'dist/public' : '')),
-  );
+      return res.setHeader('Page', req.url).sendFile(filePath)
+    }
+  })
 
-  await app.listen(process.env.PORT || process.env.APP_PORT || 3000);
+  await app.listen(process.env.PORT || process.env.APP_PORT || 3000)
 }
-bootstrap();
+
+bootstrap()
